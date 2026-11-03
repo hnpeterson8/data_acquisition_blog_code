@@ -1,0 +1,11 @@
+```{python}
+import os
+
+#import requests
+from dotenv import load_dotenv
+
+# load-api-key
+load_dotenv()
+
+api_key = os.environ["API_KEY"] 
+```
