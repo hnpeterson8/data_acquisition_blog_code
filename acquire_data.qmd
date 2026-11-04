@@ -5,6 +5,7 @@ import pandas as pd
 import requests
 from dotenv import load_dotenv
 
+
 # load-api-key
 load_dotenv()
 
@@ -78,6 +79,13 @@ final_df = pd.merge(
 )
 ```
 
+
+# Before Saving the Data
+- ensure that each column is the correct data type
+- select only the relevant data
+- check dimensions and the top few rows to ensure it worked correctly
+- create a folder named data in your directory
+- save the data as a `.csv` file. 
 ```{python}
 # make sure everything in final data set is correct data types
 final_df["year"] = final_df["year"].astype("Int64")
@@ -100,6 +108,12 @@ final_dataset = final_df[expected_columns].copy()
 
 print(final_dataset.info())
 print(final_dataset.head())
+
+# create data folder
+folder_path = "data"
+
+if not os.path.exists(folder_path):
+    os.mkdir(folder_path)
 
 final_dataset.to_csv("data/college_football.csv")
 ```
