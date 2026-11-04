@@ -122,3 +122,30 @@ conf_corr = (
 
 print(conf_corr)
 ```
+
+
+```{python}
+# how do the top 10 recruiting teams do in a given year?
+top_10 = data[data["recruiting_rank"] <= 10]
+print(top_10)
+
+# see how many unique teams there are
+top_10["team"].nunique()
+# see how many unique conferences there are
+top_10["conference"].nunique()
+
+# how do the bottom 10 recruiting teams do in a given year?
+bottom_10_by_year = (
+    data.sort_values(["year", "recruiting_rank"])
+    .groupby("year")
+    .tail(10)
+    .reset_index(drop=True)
+)
+
+# check to make sure it grabbed 10 per year
+print(bottom_10_by_year["year"].value_counts())
+
+print(bottom_10_by_year.sort_values(
+    ["win_pct", "year"], ascending = False))
+
+```
