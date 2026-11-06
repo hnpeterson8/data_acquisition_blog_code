@@ -139,4 +139,7 @@ print(bottom_10_by_year["year"].value_counts())
 print(bottom_10_by_year.sort_values(
     ["win_pct", "year"], ascending = False))
 
+bottom_10_by_year["team"].nunique()
+bottom_10_by_year["conference"].nunique()
+
 ```
